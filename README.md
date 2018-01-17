@@ -1,30 +1,130 @@
-# myClubs Frontend Challenge
 
-## About
+<p align="center">
+    <h3 align="center">Simple React Webpack Babel Starter Kit<br></h3>
+</p>
 
-This is a small challenge to assess your frontend dev skills. You should invest no more than 2-5 hours in completing it. The instructions contain all the information you need, everything else is up to your own judgement. There is no right or wrong solution, only your personal approach. Feel free to use any library, boilerplate, tool,… that you like. Don’t be afraid to use easy/convenient solutions. We are as much interested in your reasoning as we are in the result. Feel free to ask questions at any time.
+[![CircleCI](https://circleci.com/gh/ReactJSResources/react-webpack-babel/tree/master.svg?style=svg)](https://circleci.com/gh/ReactJSResources/react-webpack-babel/tree/master)
 
-## Deliverable
+[![Dependency Status](https://img.shields.io/david/ReactJSResources/react-webpack-babel.svg)](https://david-dm.org/dylang/npm-check)
 
-* use React
-* make it responsive
-* make it look nice, feel free to copy style from our website & apps
-* be creative
-* add a simple animation
+Tired of complicated starters with 200MB of dependencies which are hard to understand and modify? This is for you!
 
-Fork this repository and submit you result as pull request. One should be able to run it by cloning your repository and running:
+### What were using
+
+* React 16
+* Webpack 3
+* React Router 4
+* SASS
+* Babel Cli
+* Hot Module Reloading
+* Jest 21 
+* Enzyme 3 for testing
+
+### Features
+
+* Simple src/index.jsx and src/index.css (local module css).
+* Webpack configuration for development (with hot reloading) and production (with minification).
+* CSS module loading, so you can include your css by ```import styles from './path/to.css';```.
+* Both js(x) and css hot loaded during development.
+* [Webpack Dashboard Plugin](https://github.com/FormidableLabs/webpack-dashboard) on dev server.
+
+### To run
+
+* You'll need to have [git](https://git-scm.com/) and [node](https://nodejs.org/en/) installed in your system.
+* Fork and clone the project:
+
+```
+git clone https://github.com/ReactJSResources/react-webpack-babel.git
+```
+
+* Then install the dependencies:
 
 ```
 npm install
+```
+
+* Run development server:
+
+```
 npm start
 ```
 
-## What You Should Create
-
-Create a simple screen that displays one of our sports activities with a call to action asking the user to book it. Your app should fetch the data from this endpoint:
+* Or you can run development server with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard):
 
 ```
-https://frontend-challenge-190ff.firebaseio.com/activities/coding-activity.json
+npm run dev
 ```
 
-Upon clicking on the button you should show the user a confirmation that his booking was successful.
+Open the web browser to `http://localhost:8888/`
+
+### To test
+To run unit tests:
+
+```
+npm test
+```
+
+Tests come bundled with:
+
+* Jest
+* Enzyme
+* React Test Utils
+* React Test Renderer
+
+### To build the production package
+
+```
+npm run build
+```
+
+### Running build locally
+
+If you are using Mac/Linux simply run the following command inside public directory:
+
+```
+python -m SimpleHTTPServer 8000
+```
+
+### Nginx Config
+
+Here is an example Nginx config:
+
+```
+server {
+	# ... root and other options
+
+	gzip on;
+	gzip_http_version 1.1;
+	gzip_types text/plain text/css text/xml application/javascript image/svg+xml;
+
+	location / {
+		try_files $uri $uri/ /index.html;
+	}
+
+	location ~ \.html?$ {
+		expires 1d;
+	}
+
+	location ~ \.(svg|ttf|js|css|svgz|eot|otf|woff|jpg|jpeg|gif|png|ico)$ {
+		access_log off;
+		log_not_found off;
+		expires max;
+	}
+}
+```
+
+### Eslint
+There is a `.eslint.yaml` config for eslint ready with React plugin.
+
+To run linting, run:
+
+```
+npm run lint
+```
+
+### Notes on importing css styles
+* styles having /src/ in their absolute path considered part of the application and exported as local css modules.
+* other styles considered global styles used by components and included in the css bundle directly.
+
+### Contribute
+Please contribute to the project if you know how to make it better, including this README :)

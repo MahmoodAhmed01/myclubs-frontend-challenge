@@ -1,0 +1,28 @@
+.sport-book-button {
+  background:  none;
+     height:  48px;
+     border:  2px solid #EB3B34;
+     border-radius: 50px;
+     outline: none;
+     width:  220px;
+     font-size:  18px;
+     font-weight: bold;
+     color:  #fff;
+     transition: 0.6s ease;
+     margin-left: 20px;
+     padding-right: 5px;
+}
+
+
+.sport-book-button:hover {
+  color: #fff;
+  background-color:#EB3B34;
+}
+
+
+@media screen and (max-width: 800px) {
+
+  .sport-book-button {
+    margin-top: 10px;
+  }
+}
